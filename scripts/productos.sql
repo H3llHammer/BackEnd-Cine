@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS cinema;
 
-use cinema;
+USE cinema;
 
 CREATE TABLE IF NOT EXISTS productos
 (
@@ -14,5 +14,3 @@ CREATE TABLE IF NOT EXISTS productos
     Area varchar(20),
     PRIMARY KEY (ID_producto)
 );
-
-DESCRIBE PRODUCTOS;

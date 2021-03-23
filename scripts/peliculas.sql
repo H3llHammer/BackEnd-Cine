@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS cinema;
 
-use cinema;
+USE cinema;
 
 CREATE TABLE IF NOT EXISTS peliculas
 (
@@ -16,7 +16,3 @@ CREATE TABLE IF NOT EXISTS peliculas
   PRIMARY KEY(ID),
   FOREIGN KEY (ID_sala) REFERENCES salas(ID_sala)
 );
-
-DESCRIBE peliculas;
-
-

@@ -9,5 +9,3 @@ CREATE TABLE IF NOT EXISTS salas
     Precio decimal(6,2) NOT NULL,
     PRIMARY KEY (ID_sala)
 );
-
-DESCRIBE salas;

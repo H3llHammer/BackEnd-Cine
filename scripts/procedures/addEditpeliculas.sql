@@ -1,4 +1,4 @@
-use cinema
+use cinema;
 DELIMITER $$
 CREATE PROCEDURE peliculasAddOrEdit
 (
