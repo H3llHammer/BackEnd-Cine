@@ -4,7 +4,7 @@ USE cinema;
 
 CREATE TABLE IF NOT EXISTS productos
 (
-    ID_producto int NOT NULL,
+    ID_producto int NOT NULL auto_increment,
     Nombre varchar(50),
     Descripcion text,
     Stock int,

@@ -13,8 +13,8 @@ app.set("port", process.env.PORT || 4000);
 
 // Middlewares
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "http://localhost:3000", // login React
@@ -36,7 +36,8 @@ require("./passportConfig")(passport);
 
 // Rutas
 app.use(require("./routes/login"));
-app.use(require("./routes/peliculas"));
+app.use("/peliculas", require("./routes/peliculas"));
+app.use("/productos",require("./routes/products"));
 
 app.listen(app.get("port"), () => {
   console.log(`Servidor ejecutandose en el puerto ${app.get("port")}`);
