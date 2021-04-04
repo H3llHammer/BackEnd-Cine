@@ -13,7 +13,7 @@ module.exports = function (passport) {
             return done(err);
           }
           if (!user[0]) {
-            return done(null, false, { message: "Incorrect user name" });
+            return done(null, false, { message: "Nombre de usuario incorrecto" });
           }
           console.log(username, password, user[0].Password, user[0].ID_usuario);
           const res = await compareAsync(

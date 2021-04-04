@@ -4,19 +4,17 @@ const bcrypt = require("bcrypt");
 const mysqlConn = require("../database");
 const passport = require("passport");
 
-router.post("/login", checkNotAuthenticated, (req, res, next) => {
+router.post("/login",checkNotAuthenticated ,(req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       throw err;
     }
     if (!user) {
-      res.send("El usuario no existe");
-      //console.log(user);
+      res.status(404).send("Usuario no encontrado.");
     } else {
       req.login(user, (err) => {
         if (err) throw err;
-        res.send("Autenticacion satisfactoria");
-        //console.log(req.user);
+        res.status(200).send("Autenticacion satisfactoria");
       });
     }
   })(req, res, next);
@@ -31,14 +29,12 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
     [req.body.username, hashedPassword, req.body.username],
     (err, rows, result) => {
       if (err) {
+        res.status(500).send("Ha ocurrido un error");
         throw err;
-        res.status(404).send;
-        //res.send("Usuario agregado");
       } else if (rows.affectedRows == 1) {
-        res.send("Usuario agregado");
-        res.status(202).send;
+        res.status(200).send("Usuario agregado");
       } else {
-        res.send("Usuario ya registrado");
+        res.status(200).send("Usuario ya registrado");
       }
     }
   );
@@ -61,13 +57,12 @@ function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-
   res.send("/login");
 }
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.send("/");
+    return res.status(200).send(`El usuario ya inicio sesion`);
   }
   next();
 }
