@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS peliculas
   Actores varchar(100),
   Directores varchar(100),
   ID_sala int,
-  Imagen blob,
+  Imagen longblob,
   PRIMARY KEY(ID),
   FOREIGN KEY (ID_sala) REFERENCES salas(ID_sala)
 );

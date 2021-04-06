@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express");
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get("/", (req, res) => {
 
 router.post("/add", (req, res) => {
   const { id, nombre, descripcion, stock, precio, imagen, tipo, area } = req.body;
-  //console.log(id, nombre, descripcion, stock, precio, imagen, tipo, area)
+  const file = fs.readFileSync(imagen);
   const query = `
         SET @id = ?;
         SET @nombre = ?;
@@ -26,7 +27,7 @@ router.post("/add", (req, res) => {
         `;
   mysqlConn.query(
     query,
-    [id, nombre, descripcion, stock, precio, imagen, tipo, area],
+    [id, nombre, descripcion, stock, precio, file, tipo, area],
     (err, rows, fields) => {
       if (!err) {
         res.json({ Status: `Producto ${nombre} agregado` });

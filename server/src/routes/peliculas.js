@@ -1,7 +1,7 @@
 const express = require("express");
-const router = express.Router();
-
+const fs = require("fs");
 const mysqlConn = require("../database");
+const router = express.Router();
 
 router.get("/", (req, res) => {
   mysqlConn.query("SELECT * FROM peliculas;", (err, rows, fields) => {
@@ -30,6 +30,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
   const { id, nombre, genero, duracion, sinopsis, actores, directores, id_sala, imagen } = req.body;
+  const file = fs.readFileSync(imagen);
   const query = `
         SET @id = ?;
         SET @nombre = ?;
@@ -42,7 +43,7 @@ router.post("/", (req, res) => {
         SET @imagen = ?;
         CALL peliculasAddOrEdit(@id,@nombre,@genero,@duracion,@sinopsis,@actores,@directores,@id_sala,@imagen);
         `;
-  mysqlConn.query(query, [id, nombre, genero, duracion, sinopsis, actores, directores, id_sala, imagen], (err, rows, fields) =>{
+  mysqlConn.query(query, [id, nombre, genero, duracion, sinopsis, actores, directores, id_sala, file], (err, rows, fields) =>{
     if(!err)
     {
       res.json({Status: `Pelicula ${nombre} agregada`});
