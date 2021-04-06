@@ -1,0 +1,25 @@
+{
+    "id": 0,
+    "nombre": "Godzilla vs. Kong",
+    "genero": "Ciencia ficción",
+    "duracion": "1h 53m",
+    "sinopsis": "Godzilla y Kong, dos de las fuerzas más poderosas de un planeta habitado  por aterradoras criaturas, se enfrentan en un espectacular combate que sacude  los cimientos de la humanidad. Monarch se embarca en una misión de alto riesgo y pone rumbo hacia territorios inexplorados para descubrir los orígenes de estos dos titanes, en un último esfuerzo por tratar de salvar a dos bestias que parecen tener las horas contadas sobre la faz de la Tierra.",
+    "actores": "Millie Bobby Brown",
+    "directores": "Adam Wingard",
+    "id_sala": 1,
+    "imagen": "/home/alberto/Escritorio/pelicula1.jpeg"
+}
+
+{
+    "id": 0,
+    "nombre": "Monster Hunter: la cacería comienza",
+    "genero": "Acción/Fantasía ",
+    "duracion": "1h 44m",
+    "sinopsis": "En un mundo extraño, la teniente Artemis y su equipo de soldados de elite deben unir fuerzas con un misterioso cazador para luchar contra poderosos monstruos.",
+    "actores": "Milla Jovovich",
+    "directores": "Paul W. S. Anderson",
+    "id_sala": 2,
+    "imagen": "/home/alberto/Escritorio/pelicula2.jpg"
+}
+
+

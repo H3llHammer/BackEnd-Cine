@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   mysqlConn.query(
-    "SELECT * FROM peliculas WHERE id = ?",
+    "SELECT * FROM peliculas P JOIN salas S ON P.ID_sala = S.ID_sala JOIN horarios H ON S.ID_sala = H.ID_horario where P.ID = ?;",
     [id],
     (err, rows, fields) => {
       if (!err) {
