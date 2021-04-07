@@ -8,6 +8,7 @@ function App() {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
+  const [image , setImagen] = useState(null);
 
   const register = () => {
     axios({
@@ -53,6 +54,19 @@ function App() {
     });
   };
 
+  const imagen = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:4000/peliculas/1",
+    }).then((res) => {
+      const { Imagen } = res.data;
+      console.log(Imagen);
+      const base64String = btoa(String.fromCharCode(...new Uint8Array(Imagen.data)));
+      setImagen(base64String);
+    });
+  }
+
   return (
     <div className="App">
       <div className="register">
@@ -87,6 +101,10 @@ function App() {
       <div>
         <button onClick={logout}>log out</button>
       </div>
+
+      <button onClick={imagen}>Imagen</button>
+      <img src={`data:image/jpeg;base64,${image}`} alt=""/>
+
     </div>
   );
 }
