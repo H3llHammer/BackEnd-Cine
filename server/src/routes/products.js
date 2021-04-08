@@ -11,6 +11,14 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  mysqlConn.query("SELECT * FROM productos WHERE ID_producto = ?;", [id], (err, rows, fields) => {
+    if(!err) res.json(rows);
+    else console.log(err);
+  })
+});
+
 router.post("/add", (req, res) => {
   const { id, nombre, descripcion, stock, precio, imagen, tipo, area } = req.body;
   const file = fs.readFileSync(imagen);
@@ -40,7 +48,7 @@ router.post("/add", (req, res) => {
 
 router.delete("/delete/:id", (req, res) =>{
   const { id } = req.params;
-  mysqlConn.query('DELETE FROM productos WHERE id = ?', [id], (err, rows, fields) =>
+  mysqlConn.query('DELETE FROM productos WHERE ID_producto = ?', [id], (err, rows, fields) =>
   {
     if(!err)
     {

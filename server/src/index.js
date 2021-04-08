@@ -36,6 +36,7 @@ require("./passportConfig")(passport);
 app.use(require("./routes/login"));
 app.use("/peliculas", require("./routes/peliculas"));
 app.use("/productos",require("./routes/products"));
+app.use("/ventas", require("./routes/ventas"));
 
 app.listen(app.get("port"), () => {
   console.log(`Servidor ejecutandose en el puerto ${app.get("port")}`);
