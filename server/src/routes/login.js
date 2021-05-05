@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const mysqlConn = require("../database");
 const passport = require("passport");
 
-router.post("/login",checkNotAuthenticated ,(req, res, next) => {
+router.post("/login", checkNotAuthenticated, (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       throw err;
@@ -50,7 +50,14 @@ router.delete("/logout", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  res.send(req.user);
+  mysqlConn.query(
+    "SELECT ID_usuario, Nombres, Apellidos from usuarios WHERE Username = ?",
+    [req.user.username],
+    (err, rows) => {
+      if (!err) res.send(rows);
+      else console.log(err);
+    }
+  );
 });
 
 function checkAuthenticated(req, res, next) {

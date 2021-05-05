@@ -1,9 +1,12 @@
 const mysql = require("mysql");
 
+//35.224.234.217
+//atfuentes
+//12345
 const mysqlConn = mysql.createConnection({
-  host: "35.224.234.217",
-  user: "atfuentes",
-  password: "12345",
+  host: "localhost",
+  user: "alberto",
+  password: "Alberto_505",
   database: "cinema",
   multipleStatements: "true",
 });
@@ -18,4 +21,3 @@ mysqlConn.connect((err) => {
 });
 
 module.exports = mysqlConn;
-
